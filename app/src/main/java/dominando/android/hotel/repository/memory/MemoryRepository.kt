@@ -72,7 +72,7 @@ object MemoryRepository : HotelRepository {
             )
         )
     }
-    override fun save(hotel: Hotel) {
+    override suspend fun save(hotel: Hotel) {
         if (hotel.id == 0L) {
             hotel.id = nextId++
             hotelsList.add(hotel)
@@ -85,7 +85,7 @@ object MemoryRepository : HotelRepository {
             }
         }
     }
-    override fun remove(vararg hotels: Hotel) {
+    override suspend fun remove(vararg hotels: Hotel) {
         hotelsList.removeAll(hotels)
     }
     override fun hotelById(id: Long, callback: (Hotel?) -> Unit) {

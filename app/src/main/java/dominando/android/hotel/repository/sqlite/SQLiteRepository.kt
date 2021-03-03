@@ -41,7 +41,7 @@ class SQLiteRepository(ctx: Context): HotelRepository {
         db.close()
     }
 
-    override fun save(hotel: Hotel) {
+    override suspend fun save(hotel: Hotel) {
         if (hotel.id == 0L) {
             insert(hotel)
         } else {
@@ -49,7 +49,7 @@ class SQLiteRepository(ctx: Context): HotelRepository {
         }
     }
 
-    override fun remove(vararg hotels: Hotel) {
+    override suspend fun remove(vararg hotels: Hotel) {
         val db = helper.writableDatabase
         for (hotel in hotels) {
             db.delete(

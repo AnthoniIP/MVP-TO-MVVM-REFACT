@@ -9,7 +9,7 @@ import dominando.android.hotel.repository.HotelRepository
 
 class ProviderRepository(val ctx: Context) : HotelRepository {
 
-    override fun save(hotel: Hotel) {
+    override suspend fun save(hotel: Hotel) {
         val uri = ctx.contentResolver.insert(
             HotelProvider.CONTENT_URI,
             getValues(hotel))
@@ -28,7 +28,7 @@ class ProviderRepository(val ctx: Context) : HotelRepository {
         cv.put(COLUMN_RATING, hotel.rating)
         return cv
     }
-    override fun remove(vararg hotels: Hotel) {
+    override suspend fun remove(vararg hotels: Hotel) {
         hotels.forEach { hotel ->
             val uri = Uri.withAppendedPath(
                 HotelProvider.CONTENT_URI, hotel.id.toString())
