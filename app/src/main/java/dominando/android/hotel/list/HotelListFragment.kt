@@ -19,7 +19,6 @@ import dominando.android.hotel.model.Hotel
 import dominando.android.hotel.R
 
 class HotelListFragment : ListFragment(),
-    HotelListView,
     AdapterView.OnItemLongClickListener,
     ActionMode.Callback {
 
