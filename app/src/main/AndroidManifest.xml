@@ -23,11 +23,6 @@
                 android:name=".details.HotelDetailsActivity"
                 android:parentActivityName=".common.HotelActivity"/>
 
-        <provider
-                android:name=".repository.sqlite.HotelProvider"
-                android:authorities="dominando.android.hotel"
-                android:enabled="true"
-                android:exported="true"/>
     </application>
 
 </manifest>
