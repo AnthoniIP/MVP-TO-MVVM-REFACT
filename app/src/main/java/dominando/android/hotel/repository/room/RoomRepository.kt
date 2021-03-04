@@ -12,10 +12,10 @@ import dominando.android.hotel.repository.HotelRepository
  */
 
 class RoomRepository(
-    database: HotelDatabase
+    val database: HotelDatabase
 ) : HotelRepository {
     private val hotelDao = database.hotelDao()
-    override suspend fun save(hotel: Hotel) {
+    override fun save(hotel: Hotel) {
         if (hotel.id == 0L) {
             val id = hotelDao.insert(hotel)
             hotel.id = id
@@ -24,15 +24,15 @@ class RoomRepository(
         }
     }
 
-    override suspend fun remove(vararg hotels: Hotel) {
+    override fun remove(vararg hotels: Hotel) {
         hotelDao.delete(*hotels)
     }
 
-    override suspend fun hotelById(id: Long): LiveData<Hotel> {
+    override fun hotelById(id: Long): LiveData<Hotel> {
         return hotelDao.hotelById(id)
     }
 
-    override suspend fun search(term: String): LiveData<List<Hotel>> {
+    override fun search(term: String): LiveData<List<Hotel>> {
         return hotelDao.search(term)
     }
 
